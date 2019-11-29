@@ -3,13 +3,11 @@
 
 ##### Admin Panel - system that allow you to manage you Tasks,Users at real time , create new Tasks,Users , watch users activity live ,authentication system that verifed in server with JsonWebToken and much more ..
 
+# Pictures
 
 
+![Admin Panel Picture](https://i.imgur.com/MFbMSZ0.png)
 
-
-#Picture
-
-[Admin Panel Picture](https://i.imgur.com/MFbMSZ0.png)
 #
 
 # New Features!
