@@ -1,0 +1,312 @@
+<div class="main-content">
+        <div class="container-fluid">
+            <div>
+            <div class="row">
+                
+                <div class="col-md-12">
+                    <div class="card card-plain">
+                        <div class="card-header card-header-info">
+                            <h4 class="card-title mt-0"> Administration Panel</h4>
+                            <p class="card-category"> Do whatever you like ...</p>
+                        </div>
+
+
+
+
+                        <div class="card-body">
+                        <div class="row d-flex justify-content-center"  >
+                          <div class="col-md-10 content-center">
+                              <div class="card card-plain">
+                                  <div class="card-header card-header-warning">
+                                      <h4 class="card-title mt-0 text-center"> Creation Panel</h4>
+                                      <p class="card-category text-center"> Create whatever you like ...</p>
+                                  </div>
+
+                                  <mat-accordion>
+                                  <!-- Create new User Panel -->
+                                    <mat-expansion-panel>
+                                        <mat-expansion-panel-header>
+                                          <mat-panel-title>
+                                              <mat-icon>account_circle</mat-icon>
+                                            Create New User
+                                          </mat-panel-title>
+                                          <!-- <mat-panel-description>
+                                            This is a summary of the content
+                                          </mat-panel-description> -->
+                                        </mat-expansion-panel-header>
+                                       
+                                        <div>
+                                            <mat-form-field>
+                                                <input matInput  placeholder="Full Name"  [(ngModel)]="newUser.name"  >
+                                              </mat-form-field>
+                                              <mat-form-field>
+                                                  <input matInput  placeholder="Username"  [(ngModel)]="newUser.username" >
+                                                </mat-form-field>
+                                                <mat-form-field>
+                                                    <mat-label>{{getStatName(newUser.status)}}</mat-label>
+                                                    <mat-select [(value)]="newUser.status">
+                                                      <mat-option value="0">{{getStatName(0)}}</mat-option>
+                                                      <mat-option value="1">{{getStatName(1)}}</mat-option>
+                                                      <mat-option value="2">{{getStatName(2)}}</mat-option>
+                                                      <mat-option value="3">{{getStatName(3)}}</mat-option>
+                                                      <mat-option value="4">{{getStatName(4)}}</mat-option>
+                                                    </mat-select>
+                                                  </mat-form-field>
+                                                  <mat-form-field>
+                                                      <input matInput  placeholder="Password" [(ngModel)]="newUser.password">
+                                                    </mat-form-field>
+                                                    <!-- <mat-form-field>
+                                                        <input matInput  placeholder="Joined Date" value="user.joindate" formControlName="joindate">
+                                                      </mat-form-field> -->
+
+                                                    
+                                          
+                                    </div>
+                                       
+                                        <div class="text-center">
+                                          <button mat-button class="btn btn-success" (click)="createUser()">Create New User</button>
+                                        </div>
+                                      </mat-expansion-panel>
+
+                                      <!-- Create New Task Panel -->
+                                      <mat-expansion-panel>
+                                        <mat-expansion-panel-header>
+                                          <mat-panel-title>
+                                              <mat-icon>book</mat-icon>
+                                              Create New Task
+                                          </mat-panel-title>
+                                          
+                                        </mat-expansion-panel-header >
+                                    
+                                        <div>
+                                                <mat-form-field>
+                                                    <input matInput  placeholder="Task Title"  [(ngModel)]="newTask.title"  >
+                                                  </mat-form-field>
+                                                  <mat-form-field>
+                                                    <mat-label>{{getTaskName(newTask.status)}}</mat-label>
+                                                    <mat-select [(value)]="newTask.status">
+                                                      <mat-option value="0">{{getTaskName(0)}}</mat-option>
+                                                      <mat-option value="1">{{getTaskName(1)}}</mat-option>
+                                                      <mat-option value="2">{{getTaskName(2)}}</mat-option>
+                                                      <mat-option value="3">{{getTaskName(3)}}</mat-option>
+                                                      <mat-option value="3">{{getTaskName(4)}}</mat-option>
+                                                      <!-- <mat-option value="4">{{getTaskName(4)}}</mat-option> -->
+                                                    </mat-select>
+                                                  </mat-form-field>
+                                                  <mat-form-field>
+                                                    <input matInput  [matDatepicker]="picker" placeholder="Start Date" [(ngModel)]="newTask.startAt" ngDefaultControl>
+                                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                                    <mat-datepicker   #picker [(ngModel)]="newTask.startAt" ngDefaultControl></mat-datepicker>
+                                                  </mat-form-field>
+                                                  <mat-form-field>
+                                                    <input matInput  [matDatepicker]="picker1" placeholder="End Date" [(ngModel)]="newTask.endAt" ngDefaultControl>
+                                                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                                    <mat-datepicker   #picker1 [(ngModel)]="newTask.endAt" ngDefaultControl></mat-datepicker>
+                                                  </mat-form-field>
+                                                  <mat-form-field >
+                                                    <textarea matInput placeholder="Task Message" style="line-height: 50px !important" [(ngModel)]="newTask.message"></textarea>
+                                                </mat-form-field>
+                                              </div>
+                                       
+                                              <div class="text-center">
+                                                <button mat-button class="btn btn-success" (click)="createTask()">Create New Task</button>
+                                              </div>
+                                                  
+                                      </mat-expansion-panel>
+
+                                  </mat-accordion>
+                              </div>
+                          </div>
+                        </div>
+
+                          <!-- Registered Users Card -->
+                          <div class="col-md-4 float-left">
+                              <div class="card card-plain">
+                                  <div class="card-header card-header-success">
+                                      <h4 class="card-title mt-0 text-center"> Registered Users</h4>
+                                      <p class="card-category text-center"> Total Users: {{users.data.length}}</p>
+                                  </div>
+                                  
+                                <mat-accordion>
+                                    <mat-expansion-panel (afterExpand)=OnExpand(user) *ngFor="let user of sortedUsers() ; let index = index " expanded="false">
+                                      <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            <mat-icon>account_circle</mat-icon>
+                                           {{user.username}}
+                                        </mat-panel-title>
+                                        
+                                      </mat-expansion-panel-header >
+                                  
+                                      <div>
+                                              <mat-form-field>
+                                                  <input matInput  placeholder="Full Name"  [(ngModel)]="user.name"  >
+                                                </mat-form-field>
+                                                <mat-form-field>
+                                                    <input matInput  placeholder="Username"  [(ngModel)]="user.username" >
+                                                  </mat-form-field>
+                                                  <mat-form-field>
+                                                      <mat-label>{{getStatName(user.status)}}</mat-label>
+                                                      <mat-select [(value)]="user.status">
+                                                        <mat-option value="0">{{getStatName(0)}}</mat-option>
+                                                        <mat-option value="1">{{getStatName(1)}}</mat-option>
+                                                        <mat-option value="2">{{getStatName(2)}}</mat-option>
+                                                        <mat-option value="3">{{getStatName(3)}}</mat-option>
+                                                        <mat-option value="4">{{getStatName(4)}}</mat-option>
+                                                      </mat-select>
+                                                    </mat-form-field>
+                                                  <!-- <mat-form-field>
+                                                      <input matInput type="number" min="0" max="4" minlength="1" maxlength="1" placeholder="Currect Status: {{getStatName(user.status)}} " 
+                                                      [(ngModel)]="user.status">
+                                                    </mat-form-field> -->
+                                                    <mat-form-field>
+                                                        <input matInput  placeholder="Password" [(ngModel)]="user.password">
+                                                      </mat-form-field>
+                                                      <!-- <mat-form-field>
+                                                          <input matInput  placeholder="Joined Date" value="user.joindate" formControlName="joindate">
+                                                        </mat-form-field> -->
+
+                                                        <div >
+                                                            
+                                                          <button mat-button class="btn btn-danger" (click)="delete(user._id)">Remove</button> &nbsp;
+                                                          <button mat-button class="btn btn-warning" (click)="updateUser(user._id)" >Update</button>
+                                                      </div>
+                                            
+                                      </div>
+
+                                  
+                                    </mat-expansion-panel>
+                          
+                                  </mat-accordion>
+                                  <div class="text-center" 
+                                                         style="font-size: 35px;"
+                                                         *ngIf="users.data.length == 0">
+                                                           <br>
+                                                           <p>No Users Yet...</p>
+                                                         </div>
+                              </div>
+                          </div>
+
+                          <!-- Created Tasks Card -->
+                          <div class="col-md-4 float-left">
+                              <div class="card card-plain">
+                                  <div class="card-header card-header-success">
+                                      <h4 class="card-title mt-0 text-center"> Tasks Created</h4>
+                                      <p class="card-category text-center"> Total Tasks: {{tasks.data.length}}</p>
+
+                                  </div>           
+                                                         <div class="text-center" 
+                                                         style="font-size: 35px;"
+                                                         *ngIf="tasks.data.length == 0">
+                                                           <br>
+                                                           <p>No Tasks Yet...</p>
+                                                         </div>
+
+                                <mat-accordion>
+                                    <mat-expansion-panel (afterExpand)=OnTaskExpand(task) *ngFor="let task of tasks.data; let index = index" expanded="false">
+                                      <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            <mat-icon>book</mat-icon>
+                                            {{task.title}}
+                                          <!-- {{index +1}}. {{user.username}} -->
+                                        </mat-panel-title>
+                                        
+                                      </mat-expansion-panel-header >
+                                  
+                                      <div>
+                                              <mat-form-field>
+                                                  <input matInput  placeholder="Task Title"  [(ngModel)]="task.title"  >
+                                                </mat-form-field>
+                                                <mat-form-field>
+                                                  <mat-label>{{getTaskName(task.status)}}</mat-label>
+                                                  <mat-select [(value)]="task.status">
+                                                    <mat-option value="0">{{getTaskName(0)}}</mat-option>
+                                                    <mat-option value="1">{{getTaskName(1)}}</mat-option>
+                                                    <mat-option value="2">{{getTaskName(2)}}</mat-option>
+                                                    <mat-option value="3">{{getTaskName(3)}}</mat-option>
+                                                    <mat-option value="4">{{getTaskName(4)}}</mat-option>
+
+                                                    <!-- <mat-option value="4">{{getTaskName(4)}}</mat-option> -->
+                                                  </mat-select>
+                                                </mat-form-field>
+                                                <mat-form-field>
+                                                  <input matInput  [matDatepicker]="picker" placeholder="Start Date" [(ngModel)]="task.startAt" ngDefaultControl>
+                                                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                                  <mat-datepicker   #picker [(ngModel)]="task.startAt" ngDefaultControl></mat-datepicker>
+                                                </mat-form-field>
+                                                <mat-form-field>
+                                                  <input matInput  [matDatepicker]="picker1" placeholder="End Date" [(ngModel)]="task.endAt" ngDefaultControl>
+                                                  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                                  <mat-datepicker   #picker1 [(ngModel)]="task.endAt" ngDefaultControl></mat-datepicker>
+                                                </mat-form-field>
+                                                <mat-form-field >
+                                                  <textarea matInput placeholder="Task Message" style="line-height: 50px !important" [(ngModel)]="task.message"></textarea>
+                                              </mat-form-field>
+                                              <div >
+                                                            
+                                                <button mat-button class="btn btn-danger" (click)="deleteTask(task._id)">Remove</button> &nbsp;
+                                                <button mat-button class="btn btn-warning" (click)="updateTask(task._id)" >Update</button>
+                                            </div>
+                                                <!-- <mat-form-field>
+                                                    <input matInput  placeholder="Username"  [(ngModel)]="user.username" >
+                                                  </mat-form-field>
+                                                  <mat-form-field>
+                                                      <mat-label>{{getStatName(user.status)}}</mat-label>
+                                                      <mat-select [(value)]="user.status">
+                                                        <mat-option value="0">{{getStatName(0)}}</mat-option>
+                                                        <mat-option value="1">{{getStatName(1)}}</mat-option>
+                                                        <mat-option value="2">{{getStatName(2)}}</mat-option>
+                                                        <mat-option value="3">{{getStatName(3)}}</mat-option>
+                                                        <mat-option value="4">{{getStatName(4)}}</mat-option>
+                                                      </mat-select>
+                                                    </mat-form-field>
+                                                 
+                                                    <mat-form-field>
+                                                        <input matInput  placeholder="Password" [(ngModel)]="user.password">
+                                                      </mat-form-field>
+                                                      
+
+                                                        <div >
+                                                            
+                                                          <button mat-button class="btn btn-danger" (click)="delete(user._id)">Remove</button> &nbsp;
+                                                          <button mat-button class="btn btn-warning" (click)="updateUser(user._id)" >Update</button>
+                                                      </div> -->
+                                            
+                                      </div>
+
+                                  
+                                    </mat-expansion-panel>
+                          
+                                  </mat-accordion>
+                              </div>
+                          </div>
+
+
+
+
+
+
+
+
+
+                        </div>
+                            
+                               
+                                      <!-- <tr *ngFor="let user of users.data; let index = index">
+                                      <td>{{index +1}}</td>
+                                      <td>{{user.name}}</td>
+                                      <td>{{user.username}}</td>
+                                      <td>{{getStatName(user.status)}}</td>
+                                      <td>{{user.password}}</td>
+                                      <td class="text-danger">{{toDate(user.joindate)}}</td>
+                                      <td>
+                                          <button class="btn btn-danger" mat-raised-button (click)="delete(user._id)">Remove</button>
+                                          <button class="btn btn-warning" mat-raised-button (click)="openUpdateDialog(user._id)">Update</button>
+                                      </td>
+                                    </tr> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+      

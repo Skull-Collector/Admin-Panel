@@ -1,0 +1,15 @@
+            <h2 mat-dialog-title class="text-center">Task Information</h2>
+            <div mat-dialog-content class="text-center">
+                  <p mat-dialog-content><b>Task Title:</b> {{data.title}}</p>
+                  <p mat-dialog-content><b>Status:</b> {{getStatName(data.status)}}</p>
+                  <p mat-dialog-content><b>Start Date:</b> {{dateToString(data.startAt)}}</p>                
+                  <p mat-dialog-content><b>End Date:</b> {{dateToString(data.endAt)}}</p>
+                  <p mat-dialog-content><b>Mission:</b></p>
+                  <p mat-dialog-content >{{data.message}}</p>
+                  
+
+            </div>         
+            
+<mat-dialog-actions align="center">
+            <button mat-button mat-dialog-close>Close</button>
+       </mat-dialog-actions>

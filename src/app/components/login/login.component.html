@@ -1,0 +1,29 @@
+
+    <div  style="margin: 0 auto; padding-top: 60px" class="text-center col-md-4 col-md-offset-4" id="loginComp">
+        <div class="card">
+            <div class="card-header card-header-danger">
+                <h3 class="card-title ">Login</h3>
+            </div>
+            <div class="card-body">
+                 <!-- #loginForm="ngForm" (ngSubmit)="login(loginForm)" -->
+                <div class="form-signin" >
+                    <img style="margin: 40px; width: 200px;" src="http://clipart-library.com/new_gallery/169-1694300_panda-head-png-evil-panda-logo.png" alt="">
+                    <h2 style="text-align: center; color: rgb(48, 48, 48);">Gold Admin Panel Login</h2>
+      
+                    <h3 style="text-align: center;" class="form-signin-heading">Please login</h3>
+                    <input  type="text" class="form-control" [(ngModel)]="loginInfo.username" name="username" placeholder="Username" required="" autofocus="" />
+                    <br>
+                    <input  type="password" class="form-control" [(ngModel)]="loginInfo.password" name="password" placeholder="Password" required="" />
+                    <!-- <label class="checkbox">
+                        <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
+                      </label> -->
+                    <button class="btn btn-lg btn-danger btn-block btn-round" type="submit" (click)="onLogin()">Login</button>
+                    <!-- <div class="row" *ngIf="authError">
+                        <div class="col-12 alert alert-danger"> {{authError?.message}} </div>
+                    </div> -->
+                  </div>
+      
+            </div>
+        </div>
+      
+      </div>
