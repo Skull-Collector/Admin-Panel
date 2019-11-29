@@ -8,8 +8,8 @@
 
 
 
-#
-#
+#Picture
+![Admin Panel Picture](https://i.imgur.com/MFbMSZ0.png)
 #
 
 # New Features!
