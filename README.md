@@ -3,6 +3,11 @@
 
 ##### Admin Panel - system that allow you to manage you Tasks,Users at real time , create new Tasks,Users , watch users activity live ,authentication system that verifed in server with JsonWebToken and much more ..
 
+
+##### Link for the Live Demo : ![Live Demo](https://m-panel.web.app)
+## Login information:
+##### username: SuperMan
+##### password: 123456
 # Pictures
 
 
