@@ -36,6 +36,7 @@
 * [Express.js] 
 * [jQuery]
 * [Angular CLI]
+* [Heroku]
 
 
 ### Installation
@@ -66,7 +67,7 @@ MIT
 
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
-
+   [Heroku]: <https://www.heroku.com>
    [Live Demo]: <https://m-panel.web.app>
    [Angular Material]: <https://material.angular.io/>
    [Angular CLI]: <https://cli.angular.io/>
