@@ -4,7 +4,7 @@
 ##### Admin Panel - system that allow you to manage you Tasks,Users at real time , create new Tasks,Users , watch users activity live ,authentication system that verifed in server with JsonWebToken and much more ..
 
 
-##### Link for the Live Demo : ![Live Demo](https://m-panel.web.app)
+##### Link for the Live Demo : [Live Demo]
 ## Login information:
 ##### username: SuperMan
 ##### password: 123456
@@ -67,7 +67,7 @@ MIT
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
 
-
+   [Live Demo]: <https://m-panel.web.app>
    [Angular Material]: <https://material.angular.io/>
    [Angular CLI]: <https://cli.angular.io/>
    [dill]: <https://github.com/joemccann/dillinger>
